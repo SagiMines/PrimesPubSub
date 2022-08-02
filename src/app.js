@@ -5,9 +5,11 @@ import { prime4Digits, prime4DigitsCheck } from './clients/prime4Digits.js';
 
 export const startGenerator = limit => {
   const prime = new PrimesGenerator(limit);
+
   prime.on('prime1', prime1);
   prime.on('prime4', prime4Digits);
   prime.on('marsenne', marsenne);
+
   const startGenerator = setInterval(() => {
     let value;
     do {

@@ -1,6 +1,6 @@
-import MyEvent from '../common/myEvent.js';
+import EventEmitter from 'events';
 
-class PrimesGenerator extends MyEvent {
+class PrimesGenerator extends EventEmitter {
   constructor(limit) {
     super();
     this.generator = this.primesGenerator(limit);
