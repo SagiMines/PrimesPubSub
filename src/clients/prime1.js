@@ -1,9 +1,12 @@
 import chalk from 'chalk';
 
-const prime1 = number => {
+export const prime1Check = number => {
   if (number % 10 === 1) {
-    console.log(chalk.red(number));
+    return true;
   }
+  return false;
 };
 
-export default prime1;
+export const prime1 = number => {
+  if (prime1Check(number)) console.log(chalk.red(number));
+};

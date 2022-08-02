@@ -28,18 +28,14 @@ class PrimesGenerator extends MyEvent {
     return true;
   }
 
-  startGenerator() {
-    const startGenerator = setInterval(() => {
-      const value = this.generator.next().value;
-      if (!value) {
-        clearInterval(startGenerator);
-      } else {
-        this.emit('prime1', value);
-        this.emit('marsenne', value);
-        this.emit('prime4', value);
-        console.log(value);
-      }
-    }, 1000);
+  printPrime(value) {
+    this.emit('prime1', value);
+    this.emit('marsenne', value);
+    this.emit('prime4', value);
+  }
+
+  getGenerator() {
+    return this.generator;
   }
 }
 
