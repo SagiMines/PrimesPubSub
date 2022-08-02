@@ -12,6 +12,9 @@ export const startGenerator = limit => {
     let value;
     do {
       value = prime.getGenerator().next().value;
+      if (!value) {
+        break;
+      }
     } while (
       !prime1Check(value) &&
       !marsenneCheck(value) &&
