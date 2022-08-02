@@ -1,14 +1,42 @@
 import MyEvent from '../common/myEvent.js';
 
 class PrimesGenerator extends MyEvent {
-  prime1() {
-    this.emit('prime1');
+  constructor(limit) {
+    super();
+    this.generator = this.primesGenerator(limit);
   }
-  marsenne() {
-    this.emit('marsenne');
+
+  primesGenerator = function* (limit) {
+    if (limit >= 2) {
+      yield 2;
+    }
+    for (let i = 3; i <= limit; i = i + 2) {
+      if (this.isPrime(i)) {
+        yield i;
+      }
+    }
+  };
+  isPrime(num) {
+    if (num < 2) {
+      return false;
+    }
+    for (let i = 2; i <= Math.sqrt(num); i++) {
+      if (!(num % i)) {
+        return false;
+      }
+    }
+    return true;
   }
-  prime4() {
-    this.emit('prime4');
+
+  startGenerator() {
+    const startGenerator = setInterval(() => {
+      const value = this.generator.next().value;
+      if (!value) {
+        clearInterval(startGenerator);
+      } else {
+        console.log(value);
+      }
+    }, 1000);
   }
 }
 
